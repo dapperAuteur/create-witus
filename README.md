@@ -45,7 +45,7 @@ agency. Not a party to any collaboration.
 ## Stack
 
 Next.js 16 (App Router) · Neon Postgres + Drizzle · Better Auth as a "Sign in with WitUS" OIDC
-client · Tailwind v4 · Cloudinary (signed uploads) · Resend · Turnstile.
+client · Tailwind v4 · Cloudinary (signed uploads) · Mailgun · Turnstile.
 
 ## Contributing
 

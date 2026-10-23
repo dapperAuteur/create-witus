@@ -207,7 +207,7 @@ expose it, do not link it from `call` in v1.** See `docs/coop-phase-2.md`.
 1. **Apply** — public, Turnstile-gated form. Profile draft + **≥3 work samples** + 18+
    attestation + Code of Conduct acceptance (version recorded) → `application.status = pending`.
 2. **Approve** — BAM reviews a **batch** in `/admin` → `profile.status = approved` → welcome
-   email via Resend from `noreply@create.witus.online`.
+   email via Mailgun from `noreply@create.witus.online`.
 3. **Post a call** — approved members only. Rate-limited. Requires `expires_at`.
 4. **Browse** — filter by discipline, mode, commitment, comp type, starts-within. Blocked users
    filtered at the **query layer**, not in the UI.
