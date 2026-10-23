@@ -78,7 +78,7 @@ call in the moment.
 - **Zod v4** on every server action and route handler input. Authorization is checked
   **server-side, per row** — never client-gated.
 - **Cloudinary** for work-sample media, **signed uploads only**.
-- **Resend** for transactional email from `noreply@create.witus.online`.
+- **Mailgun** for transactional email from `noreply@create.witus.online` (env `MAILGUN_API_KEY`, `MAILGUN_DOMAIN`). Mailgun is the ecosystem mailer; never add Resend (BAM, 2026-10-23).
 - **Turnstile** on the public application form.
 
 ## Product decisions already made — don't relitigate without BAM

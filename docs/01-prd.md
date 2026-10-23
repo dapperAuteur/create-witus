@@ -1,9 +1,127 @@
 # Create.WitUS — v1 PRD
 
-**Status:** approved, not yet built · **Owner:** BAM · **Last updated:** 2026-07-22
+**Status:** under revision, not built; section 0 overrides the rest where they conflict · **Owner:** BAM · **Last updated:** 2026-10-23
 
 > Tracked in `docs/` rather than `plans/` because `plans/` is gitignored ecosystem-wide and
 > this document must survive a fresh clone. Local working notes still live in `plans/`.
+
+---
+
+## 0. Direction under review (2026-10-23)
+
+BAM changed the product's direction on 2026-10-23. This section records the new direction, the warnings from
+best-in-class research, the open questions, and the mockups that come next. **No code is written until BAM picks a
+mockup direction and this PRD is rewritten.** Where sections 1 to 11 conflict with this section, this section
+wins; the conflicts are listed in 0.5.
+
+### 0.1 The new direction
+
+1. **No in-app messaging.** People talk outside the app. A member either shows contact details up front (to
+   members, or to everyone) or receives a **contact request** and approves or declines it. On approval both sides
+   get the contact details each chose to share, by email. This replaces threads and messages.
+2. **Public profiles** that non-members can see, so members win business. The pilot keeps `noindex` and revisits.
+3. **People and organizations:** studios, facilities, vendors and union locals are first-class profiles.
+4. **Part co-op, part union, part community.** Partner with craft unions (for example IATSE and IBEW locals) so
+   artists get work done with help from skilled union crafts people. Create.WitUS shows union members' work in
+   public and sends a hire to the local's own office or referral process; it never acts as a hiring hall.
+5. **Visual, project-first showcase** (Instagram or Behance quality): images and video of real work.
+6. **Credits:** a project lists everyone who worked on it, people and organizations; each confirms, and the project
+   then appears on every credited profile.
+7. **Posts that generate work:** RFPs, crew calls, gigs and collaborations, posted beside the work.
+8. **Chapters run by partners:** BAM assigns chapter operators who run their chapter; suspension and bans across
+   chapters stay with BAM. Only BAM and chapter leaders may bulk upload members who opted in; uploaded members
+   claim their profile by signing in with WitUS.
+9. **Notifications by email** (Mailgun): interest, accept, contact request, approval, being credited. One opt-out.
+10. **English only** until a partner can translate correctly.
+
+### 0.2 Best-in-class examples and what to copy
+
+From research on about 30 products, done 2026-10-23 (the full table and 76 references are kept outside the repo
+in the local planning notes):
+
+- **Showcase:** Instagram (App Store 4.7, about 30M ratings) and Behance (4.6). Project-first portfolios.
+- **Credits:** Behance's two levels (a co-owner accepts and the project shows on both pages; a credited person is
+  named and can be invited by email), Instagram Collabs' acceptance rule, and IMDb's evidence list (call sheets,
+  contracts, end credits) used only when a credit is disputed. Every credit sent to a non-member is an invitation
+  backed by real work.
+- **Calls:** Backstage reviews best of the crew-call sites; keep responding free (its top complaint is paying to
+  apply).
+- **RFPs:** Dribbble project briefs and Behance proposals, structured and next to the portfolio.
+- **Spaces and vendors:** Giggster (4.7), praised for fast human support.
+- **Co-op economics:** Up & Go (a published 5% fee; members choose members) and Stocksy (member ownership).
+- **The gap:** no product checked combines a visual showcase, accepted credits for people and organizations,
+  calls and RFPs beside the work, union-friendly chapters, and contact by consent. Indiana's state production
+  directory (Reel-Scout) has no portfolios, reviews or credits.
+
+### 0.3 Warnings (from the reviews of products that got it wrong)
+
+- **Contact by consent is untested.** No product checked uses "ask, owner approves". Nobody knows how often owners
+  approve, how fast, or whether hirers wait. Measure approval rate and time to approve from day one and make them
+  kill criteria.
+- **Scams move to the victim's phone** when there is no in-app messaging. Verify anyone who posts calls or RFPs
+  before their posts go live (Dribbble and Stage 32 reviews describe fake job posters).
+- **Never charge to apply or to reveal contact details.** Bark and Thumbtack reviews describe fake leads and
+  refused refunds; Backstage's worst reviews are about paying to apply.
+- **No auto-renew traps and no email that cannot be stopped** (Mandy, Stage 32 reviews).
+- **Human support, not AI-only replies** (Behance and Upwork reviews).
+- **Credits need history and an appeal path**; IMDbPro reviews describe credits removed without notice.
+- **Stay out of payments** until there is staff to handle disputes (Peerspace and Contra payout complaints).
+- **Volunteer-only operations fail:** Ampled closed in 2023 citing burnout; Polywork closed in 2025 after raising
+  $44.5M. Chapter operators need a light, paid or partner-backed load.
+- **No AI filler work** in the showcase (ArtStation reviews).
+
+### 0.4 Open questions for BAM
+
+1. **Credits:** does a credit show only after the credited person confirms? (Recommended: yes, with a "pending"
+   state visible only to the poster.)
+2. **Union partnerships in the product:** a union local as an organization profile, plus "union craft" tags on
+   members? (Recommended.) What does the local get: a members' showcase page, a referral link, reporting?
+3. **Contact requests:** may non-members send one, or members only? What may each side share (email, phone,
+   website)? Rate limits? Expiry of an unanswered request?
+4. **Poster verification:** who verifies call and RFP posters (chapter operators?), and how (WitUS sign-in plus
+   a reviewed profile, a business record, a reference)?
+5. **RFP fields:** budget range, dates, location, union or non-union, deliverables, deadline, attachments?
+6. **Co-op economics:** is Create.WitUS free, a membership fee, or a published fee on work won? Who owns it if it
+   is a co-op?
+7. **Bulk upload of opted-in members:** proof of consent per row; unclaimed profiles hidden until claimed; one
+   claim email and one reminder; deletion after 60 days unclaimed; fields limited to name, email, disciplines,
+   city and links; adults only. (All recommended.)
+8. **Chapter operators:** paid, volunteer, or staffed by the partner organization? What is the smallest load that
+   keeps a chapter healthy?
+9. **Metrics:** what counts as "work got done" (a hire, a credit on a finished project, an RFP awarded)? The
+   anonymous analytics cannot measure it, so it needs database events.
+
+### 0.5 Mockups next, then the rewrite
+
+Three directions, each shown on the same five screens (a profile with credits, a project page, a call or RFP, the
+contact request and approval, an organization listing), plus a short DX panel (the data model and screens each
+direction needs):
+
+1. **Portfolio-first:** a visual feed of projects with credits; calls and RFPs one tap away.
+2. **Work-first:** calls, gigs and RFPs on the front page; portfolios as proof.
+3. **Directory-first:** a chapter directory of people, studios, vendors and union locals, with filters and the
+   contact request up front.
+
+BAM picks one or a mix. Then sections 1 to 11 are rewritten. Known conflicts to resolve in that rewrite: threads
+and messages (sections 5, 6.3, 7, CLAUDE.md invariant 2); "no studio or group directories" (4.2) versus
+organization profiles; "no import" versus bulk upload of opted-in members; "BAM decides alone" in
+`docs/trust-and-safety.md` versus chapter operators; `noindex` everywhere (4.2, 8) versus public profiles; the
+work-sample rule (three samples) versus crew, vendors and union crafts people.
+
+### 0.6 Sources for this section
+
+Adobe. (2025, August 29). *Instagram collab posts*. https://www.adobe.com/express/learn/blog/instagram-collab-posts
+Backstage. (n.d.). *Backstage: Casting calls* [Mobile app]. App Store. https://apps.apple.com/us/app/backstage-casting/id1215380527
+Giggster. (n.d.). *How much commission does Giggster take?* https://help.giggster.com/en/articles/2832062-how-much-commission-does-giggster-take
+Houghton, B. (2023, October 23). Indie music fan funding platform Ampled to shut down. *Hypebot*. https://www.hypebot.com/indie-music-fan-funding-platform-ampled-to-shut-down/
+IATSE Local 849. (n.d.). *Availability lists*. https://iatse849.com/membership/resources/tutorials/availability-lists
+IMDb. (2026, April 28). *Adding filmography credits*. https://help.imdb.com/article/contribution/filmography-credits/adding-filmography-credits/GAB5B33MBLEG73CT
+Instagram, Inc. (n.d.). *Instagram* [Mobile app]. App Store. https://apps.apple.com/us/app/instagram/id389801252
+Trustpilot. (n.d.). *Bark reviews*. https://www.trustpilot.com/review/bark.com
+Trustpilot. (n.d.). *Behance reviews*. https://www.trustpilot.com/review/behance.net
+Trustpilot. (n.d.). *Dribbble reviews*. https://www.trustpilot.com/review/dribbble.com
+
+All retrieved 2026-10-23.
 
 ---
 
@@ -207,7 +325,7 @@ expose it, do not link it from `call` in v1.** See `docs/coop-phase-2.md`.
 1. **Apply** — public, Turnstile-gated form. Profile draft + **≥3 work samples** + 18+
    attestation + Code of Conduct acceptance (version recorded) → `application.status = pending`.
 2. **Approve** — BAM reviews a **batch** in `/admin` → `profile.status = approved` → welcome
-   email via Resend from `noreply@create.witus.online`.
+   email via Mailgun from `noreply@create.witus.online`.
 3. **Post a call** — approved members only. Rate-limited. Requires `expires_at`.
 4. **Browse** — filter by discipline, mode, commitment, comp type, starts-within. Blocked users
    filtered at the **query layer**, not in the UI.

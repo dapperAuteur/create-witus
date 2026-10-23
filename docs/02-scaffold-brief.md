@@ -8,7 +8,7 @@
 - Drizzle ORM `^0.45` with `@neondatabase/serverless` `^1`; Neon Postgres, own instance, never shared (`DATABASE_URL`).
 - `better-auth` `^1.6` with the `genericOAuth` plugin as the **only** sign-in method: `providerId: "witus"`, `discoveryUrl` from env `WITUS_OIDC_DISCOVERY_URL` (value: `https://accounts.witus.online/api/idp/.well-known/openid-configuration`), `clientId` from `WITUS_OIDC_CLIENT_ID` (value `witus-create`), `clientSecret` from `WITUS_OIDC_CLIENT_SECRET`. Callback path: `/api/auth/oauth2/callback/witus`. No local password store, no magic link in production.
 - Zod `^4` on every server action and route handler. Authorization checked server-side per row.
-- Mail: **Mailgun** (the ecosystem mailer; the PRD's "Resend" is superseded). Env names as used by witus-inbox: `MAILGUN_API_KEY`, `MAILGUN_DOMAIN`. Sender `noreply@create.witus.online`.
+- Mail: **Mailgun** (the ecosystem mailer; never Resend). Env names as used by witus-inbox: `MAILGUN_API_KEY`, `MAILGUN_DOMAIN`. Sender `noreply@create.witus.online`.
 - Uploads: Cloudinary **signed** uploads only: `CLOUDINARY_CLOUD_NAME`, `CLOUDINARY_API_KEY`, `CLOUDINARY_API_SECRET`, folder `create-witus/`.
 - Bot gate: Cloudflare Turnstile on the public application form: `TURNSTILE_SITE_KEY`, `TURNSTILE_SECRET_KEY`.
 - Analytics: PostHog per the ecosystem standard (copy `lib/analytics/` from the witus-online repo unchanged; `autocapture: false`, `persistence: "memory"`, no `identify()`, `register({ app: "create" })`, `api_host: "/ingest"` with the next.config rewrite to `https://us.i.posthog.com`, `NEXT_PUBLIC_POSTHOG_HOST` set explicitly, no session replay).
